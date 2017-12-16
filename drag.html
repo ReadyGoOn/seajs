@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>seajs拖拽</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #div1{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        position: absolute;
+        top: 30px;
+        left: 0;
+        display: none;
+    }
+    #div2{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #0f0;
+    }
+    #div3{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #0ff;
+    }
+    </style>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+    <div id="div3"></div>
+    <script src="js/sea.js"></script>
+    <script>
+        seajs.use('./js/drag/index.js',function(data){
+
+        });
+    </script>
+</body>
+</html>

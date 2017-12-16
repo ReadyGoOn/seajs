@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>seajs模块化开发</title>
+</head>
+<body>
+    <h1>冲突，依赖，性能</h1>
+    一个适合web端的模块加载器，解决冲突，依赖，性能等问题，
+    提升代码的可维护性，
+    <p>
+        http://seajs.org
+    </p>
+    http://www.tuicool.com/articles/3uIZzy<br/>
+    http://www.tuicool.com/articles/FfEJv2u<br/>
+    1.引入sea.js的库<br/>
+    2.如何变成模块 --define<br/>
+    3.如何调用模块 --exports,--seajs.use<br/>
+    4.如何依赖模块 --require<br/>
+
+    <script src='js/sea.js'></script>
+    <script>
+        /**
+         * seajs.use:页面去调用模块。
+         * 1.第一个参数：模块的地址(地址是相对与sea.js的，引用时注意即：默认更目录为:sea.js文件)；
+         * 2.第二个参数：地址加载成功后的回调函数；
+         * 
+         * 
+        */
+        // seajs.use('index.js',function(data){//以sea.js为根目录
+        seajs.use('./js/index.js',function(data){//以相对目录./表示当前目录
+            //回调的参数就是模块中的exports
+            data.tab();
+            console.log(123456);
+        });
+
+         seajs.use('index.js',function(data){//以sea.js为根目录
+        // seajs.use('./js/index.js',function(data){//以相对目录./表示当前目录
+            //回调的参数就是模块中的exports
+            data.tab();
+            // console.log(123456);
+        });
+
+
+        /***
+         * 扩展：
+         * 1.define除了回调外，还可加载json,字符串来使用
+         * 2.require：还可以异步加载引入文件，require('路径'，function(data){})
+         * 3.module：主要用作辅助调试功能，对模块内部进行调试，可看到依赖，ID等
+         * ***/
+           //数组可加载多个js文件(参数与对应的模块接口一一对应)，还可加载css,
+         seajs.use(['./js/index1.js','./js/index2.js','./js/index3.js'],function(data1,data2,data3){//以相对目录./表示当前目录
+            //回调的参数就是模块中的exports
+            data.tab();
+            console.log(123456);
+        });
+
+    </script>
+</body>
+</html>
